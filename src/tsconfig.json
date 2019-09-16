@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "lib": ["dom", "es2015"],
+        "rootDir": ".",
+        "sourceRoot": ".",
+        "outFile": "../public/js/barcode-stuff.js",
+        "target": "es5",
+        "inlineSourceMap": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules", "dist"],
+    "include": ["./**/*.ts"]
+}

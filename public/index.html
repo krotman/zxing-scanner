@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta
+            name="viewport"
+            content="width=device-width"
+        >
+        <title>Barcode Reader</title>
+    </head>
+    <body>
+        <div id="main">
+            <div id="result"></div>
+        </div>
+        <style>
+            #main {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            #result {
+                margin-bottom: 20px;
+            }
+            canvas {
+                padding: 20px;
+                border: 20px solid #808080ad;
+                border-radius: 10px;
+            }
+        </style>
+        <script src="/js/zxing_reader.js"></script>
+        <script
+            data-main="/js/barcode-stuff"
+            src="/js/requirejs.min.js"
+        ></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                setTimeout(()=>{
+                    require('barcode-stuff').main().then(({canvas, found, stop}) => {
+                        document.querySelector('#main').appendChild(canvas);
+                        found((str) => {
+                            console.log(str);
+                            document.querySelector('#result').innerText = str;
+                        });
+                    });
+                }, 500);
+            });
+        </script>
+    </body>
+</html>
